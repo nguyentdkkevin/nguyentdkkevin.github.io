@@ -10,13 +10,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0d0f14;
-      --surface:   #13161e;
-      --border:    #1e2330;
-      --accent:    #c8a96e;
-      --accent2:   #6e9ec8;
-      --text:      #e8e4dc;
-      --muted:     #7a7f8e;
+      --bg:        #f5f0eb;
+      --surface:   #fefcf8;
+      --border:    #e0d5c7;
+      --accent:    #b8860b;
+      --accent2:   #6b5641;
+      --text:      #0a0a0a;
+      --muted:     #5a4a3a;
       --sidebar-w: 260px;
       --ease: cubic-bezier(.25,.8,.25,1);
     }
@@ -25,7 +25,7 @@
       height: 100%;
       background: var(--bg);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: Cambria, serif;
       font-size: 15px;
       line-height: 1.7;
     }
@@ -42,8 +42,8 @@
       top: 0; left: 0;
       width: var(--sidebar-w);
       height: 100vh;
-      background: var(--surface);
-      border-right: 1px solid var(--border);
+      background: #5a0000;
+      border-right: 1px solid rgba(232, 197, 71, 0.15);
       display: flex;
       flex-direction: column;
       padding: 2.5rem 1.75rem;
@@ -54,7 +54,7 @@
     .sidebar-name {
       font-family: 'DM Serif Display', serif;
       font-size: 1.35rem;
-      color: var(--text);
+      color: #e8c547;
       letter-spacing: .01em;
       line-height: 1.25;
       margin-bottom: .35rem;
@@ -62,7 +62,7 @@
     .sidebar-tagline {
       font-family: 'DM Mono', monospace;
       font-size: .7rem;
-      color: var(--accent);
+      color: #e8c547;
       text-transform: uppercase;
       letter-spacing: .12em;
       margin-bottom: 2.5rem;
@@ -76,6 +76,18 @@
 
     nav { flex: 1; }
 
+    .nav-category {
+      font-family: 'DM Mono', monospace;
+      font-size: .65rem;
+      color: #e8c547;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-top: 1.5rem;
+      margin-bottom: .75rem;
+      padding: 0 .75rem;
+      font-weight: 600;
+    }
+
     nav a {
       display: flex;
       align-items: center;
@@ -83,7 +95,7 @@
       padding: .55rem .75rem;
       border-radius: 6px;
       text-decoration: none;
-      color: var(--muted);
+      color: rgba(232, 197, 71, 0.6);
       font-size: .875rem;
       font-weight: 400;
       letter-spacing: .02em;
@@ -91,8 +103,8 @@
       margin-bottom: .1rem;
       cursor: pointer;
     }
-    nav a:hover { color: var(--text); background: var(--border); }
-    nav a.active { color: var(--accent); background: rgba(200,169,110,.08); font-weight: 500; }
+    nav a:hover { color: #e8c547; background: rgba(232, 197, 71, 0.12); }
+    nav a.active { color: #e8c547; background: rgba(232, 197, 71, 0.15); font-weight: 500; }
 
     .nav-icon {
       width: 16px; height: 16px;
@@ -104,7 +116,7 @@
     .sidebar-footer {
       font-family: 'DM Mono', monospace;
       font-size: .65rem;
-      color: var(--muted);
+      color: rgba(232, 197, 71, 0.45);
       margin-top: 2rem;
       letter-spacing: .06em;
     }
@@ -119,7 +131,8 @@
     .page {
       display: none;
       padding: 4rem 4.5rem;
-      max-width: 860px;
+      max-width: 1000px;
+      margin: 0 auto;
       animation: fadeUp .35s var(--ease) both;
     }
     .page.active { display: block; }
@@ -329,6 +342,49 @@
       padding: .5rem .75rem;
       font-size: .78rem;
       color: #a0a8b8;
+      cursor: pointer;
+      position: relative;
+      transition: all .2s var(--ease);
+      user-select: none;
+    }
+    .course-item:hover {
+      border-color: var(--accent);
+      background: rgba(212, 169, 68, 0.05);
+      color: var(--text);
+    }
+    .course-item::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      white-space: normal;
+      width: 280px;
+      font-size: .75rem;
+      color: var(--text);
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s var(--ease);
+      line-height: 1.5;
+    }
+    .course-item:hover::after {
+      opacity: 1;
+    }
+    .course-category-label {
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
     /* ── Projects ── */
@@ -341,7 +397,7 @@
       transition: border-color .2s var(--ease), transform .2s var(--ease);
     }
     .project-card:hover {
-      border-color: rgba(200,169,110,.35);
+      border-color: rgba(244, 208, 63, 0.35);
       transform: translateY(-2px);
     }
     .project-header {
@@ -359,9 +415,55 @@
       border-radius: 3px;
     }
     .status-active { background: rgba(100,200,120,.1); color: #64c878; border: 1px solid rgba(100,200,120,.2); }
-    .status-complete { background: rgba(200,169,110,.1); color: var(--accent); border: 1px solid rgba(200,169,110,.2); }
+    .status-complete { background: rgba(212, 169, 68, 0.08); color: var(--accent); border: 1px solid rgba(212, 169, 68, 0.2); }
     .status-wip { background: rgba(110,158,200,.1); color: var(--accent2); border: 1px solid rgba(110,158,200,.2); }
     .project-tech { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .75rem; }
+
+    .project-tier-flagship {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem 2rem;
+      border-top: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+    .project-tier-flagship h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-family: 'DM Mono', monospace;
+    }
+    .project-tier-flagship .project-card {
+      background: rgba(212, 169, 68, 0.03);
+      border-color: rgba(212, 169, 68, 0.15);
+    }
+    .project-tier-flagship .project-card:hover {
+      border-color: rgba(212, 169, 68, 0.35);
+    }
+
+    .project-tier-standard {
+      padding: 1.5rem 2rem;
+      background: rgba(110,158,200,.03);
+      border: 1px solid rgba(110,158,200,.15);
+      border-radius: 8px;
+    }
+    .project-tier-standard h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--accent2);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-family: 'DM Mono', monospace;
+    }
+    .project-tier-standard .project-card {
+      background: transparent;
+      border-color: rgba(110,158,200,.2);
+    }
+    .project-tier-standard .project-card:hover {
+      border-color: rgba(110,158,200,.4);
+    }
     .tech-tag {
       background: var(--bg);
       border: 1px solid var(--border);
@@ -405,7 +507,7 @@
       cursor: pointer;
     }
     .contact-card:hover {
-      border-color: rgba(200,169,110,.4);
+      border-color: rgba(212, 169, 68, 0.4);
       transform: translateY(-2px);
     }
     .contact-platform {
@@ -432,6 +534,33 @@
       .contact-grid { grid-template-columns: 1fr; }
       .course-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── Color Palettes ── */
+    /* Professional pages: Palette #4 (light cream - default) */
+    .page#page-home, .page#page-about, .page#page-education, 
+    .page#page-experience, .page#page-projects, .page#page-resume,
+    .page#page-contact {
+      --bg: #f5f0eb;
+      --surface: #fefcf8;
+      --border: #e0d5c7;
+      --accent: #b8860b;
+      --accent2: #6b5641;
+      --text: #0a0a0a;
+      --muted: #5a4a3a;
+    }
+
+    /* Personal pages: Palette #1 (dark purple) */
+    .page#page-eclipse, .page#page-hobbies, .page#page-travel, 
+    .page#page-archives {
+      --bg: #f5f0eb;
+      --surface: #fefcf8;
+      --border: #e0d5c7;
+      --accent: #b8860b;
+      --accent2: #6b5641;
+      --text: #0a0a0a;
+      --muted: #5a4a3a;
+    }
+
   </style>
 </head>
 <body>
@@ -439,8 +568,9 @@
 
   <!-- ── Sidebar ── -->
   <aside id="sidebar">
-    <div class="sidebar-name">Your Name</div>
-    <div class="sidebar-tagline">Student · Incoming MFE</div>
+    <div class="sidebar-name">Kevin Nguyen</div>
+    <div class="sidebar-tagline">Quantitative Finance</div>
+    <div style="font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted); letter-spacing: .06em; margin-bottom: 2.5rem;">UCLA Triple Major · Dungeon Master</div>
 
     <nav>
       <a href="#" class="active" data-page="home">
@@ -452,7 +582,7 @@
         About
       </a>
 
-      <div class="sidebar-divider"></div>
+      <div class="nav-category">Professional and Academics</div>
 
       <a href="#" data-page="education">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10l-10-6L2 10l10 6 10-6z"/><path d="M6 12v5c0 2.21 2.69 4 6 4s6-1.79 6-4v-5"/></svg>
@@ -460,30 +590,51 @@
       </a>
       <a href="#" data-page="experience">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-        Experience
+        Work Experience
+      </a>
+      <a href="#" data-page="projects">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Portfolio
       </a>
       <a href="#" data-page="resume">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
-        Résumé
+        Resume & Documents
       </a>
 
-      <div class="sidebar-divider"></div>
+      <div class="nav-category">Dungeons and Dragons</div>
 
-      <a href="#" data-page="projects">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        Projects
+      <a href="#" data-page="eclipse">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0 0 20"/></svg>
+        Eclipse Campaign
       </a>
+
+      <div class="nav-category">Personal Life</div>
+
       <a href="#" data-page="hobbies">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         Hobbies
       </a>
+      <a href="#" data-page="travel">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c3.5 3 7 5 10 8M12 22c3.5-3 7-5 10-8"/></svg>
+        Travel
+      </a>
+      <a href="#" data-page="archives">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9h18V7H3v2zm0 4h18v-2H3v2zm0 4h18v-2H3v2z"/></svg>
+        Archives
+      </a>
+
+      <div class="nav-category">Contact</div>
+
       <a href="#" data-page="contact">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Contact
       </a>
     </nav>
 
-    <div class="sidebar-footer">© 2025 · Your Name</div>
+
+
+
+    <div class="sidebar-footer">© 2025 · Kevin Nguyen</div>
   </aside>
 
   <!-- ── Main Content ── -->
@@ -492,9 +643,9 @@
     <!-- HOME -->
     <section class="page active" id="page-home">
       <div class="page-eyebrow">Welcome</div>
-      <h1>Hello,<br/>I'm Your Name.</h1>
-      <p class="home-intro">Quantitative finance enthusiast, machine learning practitioner, and incoming Master of Financial Engineering student.</p>
-      <p>I sit at the intersection of mathematics, markets, and computation — building models that make sense of complex systems, from neural networks predicting human behavior to algorithms navigating financial markets.</p>
+      <h1>Greetings,<br/>I am Kevin Nguyen.</h1>
+      <p class="home-intro">Quantitative analyst and machine learning engineer. Now at Columbia MFE, building systematic trading strategies at the nexus of mathematics, computation, and finance.</p>
+      <p>I build computational models that decode complexity—from neural networks extracting signals from physiological data to algorithms navigating market microstructure. My approach combines rigorous mathematical foundations with practical implementation, always seeking the intersection of theory and impact.</p>
 
       <div class="home-links">
         <button class="btn btn-primary" onclick="navigate('projects')">View Projects</button>
@@ -502,10 +653,15 @@
         <button class="btn btn-ghost" onclick="navigate('contact')">Get in Touch</button>
       </div>
 
+      <div style="margin-top: 2.5rem;">
+        <img src="Front Cover Image.jpg" alt="Kevin Nguyen"
+          style="width: 100%; max-width: 620px; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 40px rgba(0,0,0,0.13); object-fit: cover; display: block;" />
+      </div>
+
       <div class="home-stats">
         <div class="stat">
-          <div class="stat-num">1</div>
-          <div class="stat-label">Research Project</div>
+          <div class="stat-num">409</div>
+          <div class="stat-label">Units Taken</div>
         </div>
         <div class="stat">
           <div class="stat-num">MFE</div>
@@ -521,25 +677,33 @@
     <!-- ABOUT -->
     <section class="page" id="page-about">
       <div class="page-eyebrow">About Me</div>
-      <h1>A bit about<br/><em style="font-style:italic;color:var(--accent)">who I am.</em></h1>
+      <h1>A bit about<br/><em style="font-style:italic;color:var(--accent)">what drives me.</em></h1>
 
       <div class="about-grid">
         <div>
-          <p>I'm a [Year] student at [Your University] studying [Your Major], with a deep fascination for the places where mathematics, computation, and finance intersect. I'm drawn to hard problems — the kind that require both rigorous analytical thinking and creative engineering.</p>
+          <p>I'm driven by the belief that rigorous quantitative thinking and elegant engineering can unlock value in financial markets. At UCLA, I developed a strong foundation across mathematics, computer science, and economics—completing dual majors in Business Economics and Mathematics of Computation, with a focus on Statistics and Data Science. My 3.788 GPA reflects deep engagement with theory-heavy coursework in analysis, stochastic processes, econometrics, and machine learning.</p>
 
-          <p>My work spans quantitative finance, machine learning, and signal processing. Whether I'm building neural architectures to decode physiological signals or modeling market microstructure, I care about building things that are both theoretically sound and practically useful.</p>
+          <p>Whether building statistical models to extract signals from market data, or architecting algorithms for systematic trading strategies, I approach every challenge with both analytical rigor and practical creativity. I thrive at the intersection of theory and application, where elegant mathematics meets tangible impact in financial systems.</p>
 
-          <p>Outside of academics, you'll find me [hobby 1], [hobby 2], and constantly reading about [topic you love]. I believe the best ideas come from connecting dots across disciplines.</p>
+          <p>I'm currently pursuing a Master of Financial Engineering at Columbia University, deepening expertise in quantitative methods, derivatives valuation, portfolio optimization, and algorithmic trading. I'm particularly passionate about machine learning applications in finance—using computational methods to uncover alpha and build robust trading systems.</p>
 
-          <p>I'm currently preparing for my Master of Financial Engineering — excited to deepen my quant toolkit and contribute to the field.</p>
+          <p>Beyond the terminal, I explore connections between disciplines: complexity theory, behavioral finance, market microstructure. I believe the most innovative solutions come from synthesizing rigorous theory with creative problem-solving.</p>
 
           <div class="tag-list">
             <span class="tag">Quantitative Finance</span>
             <span class="tag">Machine Learning</span>
-            <span class="tag">Signal Processing</span>
+            <span class="tag">Statistical Modeling</span>
             <span class="tag">Algorithmic Trading</span>
+            <span class="tag">Portfolio Optimization</span>
+            <span class="tag">Derivatives Pricing</span>
             <span class="tag">Python</span>
             <span class="tag">C++</span>
+            <span class="tag">R</span>
+            <span class="tag">Econometrics</span>
+            <span class="tag">Data Science</span>
+            <span class="tag">Real Analysis</span>
+            <span class="tag">Stochastic Processes</span>
+            <span class="tag">Linear Algebra</span>
           </div>
         </div>
 
@@ -547,28 +711,24 @@
           <div class="about-card">
             <div class="about-card-label">Quick Facts</div>
             <div class="about-card-item">
-              <span>Location</span>
-              <span>Your City, State</span>
+              <span>Education</span>
+              <span>UCLA · 3.788 GPA</span>
             </div>
             <div class="about-card-item">
-              <span>University</span>
-              <span>Your University</span>
+              <span>Current Program</span>
+              <span>Columbia MFE</span>
             </div>
             <div class="about-card-item">
-              <span>Degree</span>
-              <span>B.S. Your Major</span>
+              <span>Majors</span>
+              <span>Econ, Math, Stats</span>
             </div>
             <div class="about-card-item">
-              <span>Graduation</span>
-              <span>May 20XX</span>
+              <span>Programming</span>
+              <span>Python, C++, R</span>
             </div>
             <div class="about-card-item">
-              <span>Next Step</span>
-              <span>MFE Program</span>
-            </div>
-            <div class="about-card-item">
-              <span>Open To</span>
-              <span>Internships, Research</span>
+              <span>Specialties</span>
+              <span>ML, Trading, Modeling</span>
             </div>
           </div>
         </div>
@@ -582,28 +742,90 @@
 
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-date">Expected May 20XX</div>
-          <h3>Bachelor of Science — Your Major</h3>
-          <div class="timeline-org">Your University · Your City, State</div>
-          <p>GPA: X.XX / 4.00 &nbsp;·&nbsp; [Any honors, dean's list, etc.]</p>
-          <p>Relevant Coursework:</p>
+          <div class="timeline-date">Expected May 2026</div>
+          <h3>Bachelor of Science — Multiple Majors</h3>
+          <div class="timeline-org">University of California, Los Angeles · Los Angeles, CA</div>
+          <p><strong>Majors:</strong> Business Economics, Mathematics of Computation, Statistics and Data Science</p>
+          <p><strong>Minor:</strong> Accounting | <strong>Cumulative GPA:</strong> 3.788 / 4.00 | <strong>Dean's List</strong> (Spring 2024)</p>
+          <p>Rigorous quantitative curriculum emphasizing advanced mathematics, statistical theory, and applications to finance and data science. Completed 378.5 total units with strong performance in computationally-intensive and theory-heavy coursework.</p>
+          <p style="font-weight:600; color: var(--accent); margin-bottom: 0.75rem; margin-top: 1rem;">Statistics and Data Science</p>
           <div class="course-grid">
-            <div class="course-item">Probability & Statistics</div>
-            <div class="course-item">Linear Algebra</div>
-            <div class="course-item">Machine Learning</div>
-            <div class="course-item">Stochastic Processes</div>
-            <div class="course-item">Numerical Methods</div>
-            <div class="course-item">Data Structures & Algorithms</div>
-            <div class="course-item">Financial Mathematics</div>
-            <div class="course-item">Econometrics</div>
+            <div class="course-item" data-tooltip="STATS 100A | Probability | Spring 2024 | Grade: A+&#10;• Developed probability models for common discrete and continuous distributions.&#10;• Explored conditional probability, pdfs/cdfs, limit theorems, and moment-generating functions.">Probability (STATS 100A)</div>
+            <div class="course-item" data-tooltip="STATS 100B | Mathematical Statistics | Fall 2024 | Grade: A&#10;• Derived estimator properties using method of moments and maximum likelihood.&#10;• Applied distribution theory to hypothesis testing, Neyman-Pearson lemma, order statistics.">Mathematical Statistics (STATS 100B)</div>
+            <div class="course-item" data-tooltip="STATS 100C | Linear Models | Spring 2025 | Grade: A&#10;• Derived OLS, GLS, and ridge regression equations using matrix/vector calculus.&#10;• Introduction to partial regression and constrained optimization.">Linear Models (STATS 100C)</div>
+            <div class="course-item" data-tooltip="STATS 101A | Regression | Winter 2025 | Grade: A&#10;• Modeled relationships using simple and multiple linear regression.&#10;• Applied hypothesis testing, multicollinearity diagnostics, and model validation.">Regression (STATS 101A)</div>
+            <div class="course-item" data-tooltip="STATS 101B | Experiments | Summer 2025 | Grade: A&#10;• Designed factorial and block experiments for multivariate data.&#10;• Breakdown of ANOVA and post-hoc tests for fixed and random effects.">Experiments (STATS 101B)</div>
+            <div class="course-item" data-tooltip="STATS 101C | Data Mining | Fall 2025 | Grade: In Progress&#10;• Applying regression trees, clustering, and ensemble methods in R.&#10;• Using cross-validation and regularization for optimization and feature selection.">Data Mining (STATS 101C)</div>
+            <div class="course-item" data-tooltip="STATS 102A | Computational Statistics | Winter 2025 | Grade: A&#10;• Developed R skills: tidydata, webscraping, dplyr.&#10;• Implemented numerical methods and bootstrapping.">Computational Statistics (STATS 102A)</div>
+            <div class="course-item" data-tooltip="STATS 102B | Optimization | Spring 2025 | Grade: A+&#10;• Learned gradient descent and variants (Nesterov, Heavy Ball, AdaGrad).&#10;• Introduction to neural networks with cross-validation and ROC curves.">Optimization (STATS 102B)</div>
+            <div class="course-item" data-tooltip="STATS 102C | Monte Carlo Methods | Summer 2025 | Grade: A&#10;• Introduction to Bayesian statistics and stochastic processes.&#10;• Learned importance sampling, rejection sampling, Gibbs Sampler.">Monte Carlo Methods (STATS 102C)</div>
+            <div class="course-item" data-tooltip="STATS 186 | Statistical Models | Fall 2025 | Grade: In Progress&#10;• Worked with efficient frontier and volatility-return tradeoff.&#10;• Derived option theory formulas and Black-Scholes formula.">Statistical Models Finance (STATS 186)</div>
+          </div>
+
+          <p style="font-weight:600; color: var(--accent); margin-bottom: 0.75rem; margin-top: 1rem;">Mathematics</p>
+          <div class="course-grid">
+            <div class="course-item" data-tooltip="MATH 100 | Problem Solving | Fall 2025 | Grade: In Progress&#10;• Covered algebra, geometry, combinatorics, series, group theory.&#10;• Advanced problem solving techniques toward Putnam-level problems.">Competition Math (MATH 100)</div>
+            <div class="course-item" data-tooltip="MATH 110A | Abstract Algebra I | Fall 2025 | Grade: In Progress&#10;• Studying groups, fields, ideals, rings, and properties.&#10;• Modular arithmetic to polynomial rings and quotient rings.">Abstract Algebra (MATH 110A)</div>
+            <div class="course-item" data-tooltip="MATH 115A | Linear Algebra | Spring 2024 | Grade: A+&#10;• Rigorous proof language and properties of maps (injectivity, surjectivity).&#10;• Axioms of vector spaces and isomorphism definitions.">Linear Algebra (MATH 115A)</div>
+            <div class="course-item" data-tooltip="MATH 131A | Real Analysis I | Fall 2024 | Grade: A+&#10;• Sequences, series, limits, and convergence using epsilon-delta proofs.&#10;• Fundamental theorems of calculus with triangle inequality applications.">Real Analysis I (MATH 131A)</div>
+            <div class="course-item" data-tooltip="MATH 131B | Real Analysis II | Winter 2025 | Grade: B+&#10;• Properties of metric spaces: completeness, connectedness, compactness.&#10;• Continuity, convergence, and analytic functions.">Real Analysis II (MATH 131B)</div>
+            <div class="course-item" data-tooltip="MATH 132 | Complex Analysis | Summer 2025 | Grade: A-&#10;• Complex numbers and transformations from visual and analytic perspectives.&#10;• Complex integrals and contour integrals using Residue theorem.">Complex Analysis (MATH 132)</div>
+            <div class="course-item" data-tooltip="MATH 151A | Numerical Methods I | Winter 2025 | Grade: A&#10;• Lagrange interpolation, numerical differentiation and integration.&#10;• Root finding methods and Gaussian elimination.">Numerical Methods I (MATH 151A)</div>
+            <div class="course-item" data-tooltip="MATH 151B | Numerical Methods II | Spring 2025 | Grade: A-&#10;• IVP and BVP solving using numerical methods.&#10;• Convergence and stability analysis of iterative algorithms.">Numerical Methods II (MATH 151B)</div>
+            <div class="course-item" data-tooltip="MATH 156 | Machine Learning | Summer 2025 | Grade: A&#10;• Bias-Variance tradeoff and overfitting prevention.&#10;• Supervised (SVM, random forests, boosting) and unsupervised learning (k-means, PCA).">Machine Learning (MATH 156)</div>
+            <div class="course-item" data-tooltip="MATH 171 | Stochastic Processes | Winter 2025 | Grade: A&#10;• Markov chain properties, irreducibility, recurrent states.&#10;• Exit distributions and Poisson/Exponential variables.">Stochastic Processes (MATH 171)</div>
+            <div class="course-item" data-tooltip="MATH 180 | Graph Theory | Fall 2024 | Grade: A-&#10;• Hall's theorem, Brooke's theorem, and Ramsey theory.&#10;• Connectivity, planarity, coloring problems with combinatorial techniques.">Graph Theory (MATH 180)</div>
+          </div>
+
+          <p style="font-weight:600; color: var(--accent); margin-bottom: 0.75rem; margin-top: 1rem;">Quantitative Finance</p>
+          <div class="course-grid">
+            <div class="course-item" data-tooltip="ECON 106F | Corporate Finance | Fall 2024 | Grade: A-&#10;• Time value of money and discounted cash flow methods.&#10;• Bond, loan, mortgage rates, CAPM model, alpha and beta estimation.">Corporate Finance (ECON 106F)</div>
+            <div class="course-item" data-tooltip="ECON 106V | Investments | Spring 2025 | Grade: A&#10;• Interest rate calculations and yield metrics for different investments.&#10;• Options theory, binomial pricing model, and Black-Scholes formula.">Investments (ECON 106V)</div>
+            <div class="course-item" data-tooltip="STATS C183 | Statistical Models | Fall 2025 | Grade: In Progress&#10;• Efficient frontier and volatility-return tradeoff analysis.&#10;• Option theory, arbitrage, and Black-Scholes formula derivation.">Models in Finance (STATS C183)</div>
+          </div>
+
+          <p style="font-weight:600; color: var(--accent); margin-bottom: 0.75rem; margin-top: 1rem;">Economics</p>
+          <div class="course-grid">
+            <div class="course-item" data-tooltip="ECON 101 | Microeconomics | Fall 2023 | Grade: A+&#10;• Consumer choice, firm behavior, and market equilibrium in monopolies.&#10;• Introduction to game theory for oligopoly scenarios.">Microeconomics (ECON 101)</div>
+            <div class="course-item" data-tooltip="ECON 102 | Macroeconomics | Winter 2024 | Grade: A+&#10;• Technology and labor impact using Solow Growth model.&#10;• Keynesian economics, IS-LM, IS-MP-PC, foreign exchange markets.">Macroeconomics (ECON 102)</div>
+            <div class="course-item" data-tooltip="ECON 103 | Econometrics | Winter 2024 | Grade: A&#10;• Regression and statistics from economists' perspective.&#10;• Hypothesis testing, confidence intervals, interaction terms.">Econometrics (ECON 103)</div>
+            <div class="course-item" data-tooltip="ECON 104 | Data Science | Winter 2025 | Grade: A+&#10;• Heteroskedasticity and autocorrelation remediation techniques.&#10;• Time series and panel data with pooled/fixed/random effects models.">Data Science (ECON 104)</div>
+            <div class="course-item" data-tooltip="ECON 106G | Game Theory | Spring 2024 | Grade: A+&#10;• Nash equilibrium and mixed strategies in repeated and sequential games.&#10;• Backward induction for SPNEs and real-world scenarios.">Game Theory (ECON 106G)</div>
+            <div class="course-item" data-tooltip="ECON 106I | Organizational | Fall 2025 | Grade: In Progress&#10;• Incentive design, asymmetric information, principal-agent problems.&#10;• Case studies of corporate organizational structures and efficiency.">Organizational (ECON 106I)</div>
+            <div class="course-item" data-tooltip="ECON 144 | Forecasting | Fall 2025 | Grade: In Progress&#10;• ARIMA and VAR models for macroeconomic time series.&#10;• Exponential filters, volatility metrics, state space models.">Forecasting (ECON 144)</div>
+          </div>
+
+          <p style="font-weight:600; color: var(--accent); margin-bottom: 0.75rem; margin-top: 1rem;">Computer Science</p>
+          <div class="course-grid">
+            <div class="course-item" data-tooltip="COM SCI 32 | Data Structures | Summer 2024 | Grade: A-&#10;• Queues, stacks, linked lists, trees, hash maps, graphs, OOP principles.&#10;• Recursion and fast sorting algorithms with Big-O complexity analysis.">Data Structures (COM SCI 32)</div>
+            <div class="course-item" data-tooltip="COM SCI 33 | Computer Organization | Fall 2024 | Grade: A+&#10;• x86 assembly and C programming for memory and registers.&#10;• Cache structures, tiling, register optimization, and threat analysis.">Computer Organization (COM SCI 33)</div>
+          </div>
+
+          <p style="font-weight:600; color: var(--accent); margin-bottom: 0.75rem; margin-top: 1rem;">Business Analytics</p>
+          <div class="course-grid">
+            <div class="course-item" data-tooltip="MGMT 142A | Analytics I | Fall 2024 | Grade: A-&#10;• Excel proficiency with lookup functions, Xlookup, Index-Match-Match.&#10;• Conditional formulas, VBA macros, 30+ workpapers, basic visualization.">Analytics I (MGMT 142A)</div>
+            <div class="course-item" data-tooltip="MGMT 142B | Analytics II | Winter 2025 | Grade: A-&#10;• Pivot tables and Power Pivot in Excel.&#10;• Data transformation with Power Query, combining csv/xlsx files.">Analytics II (MGMT 142B)</div>
+            <div class="course-item" data-tooltip="MGMT 142C | Analytics III | Spring 2025 | Grade: A&#10;• Real-life accounting analysis with Tableau storyboards.&#10;• Power BI query tools and interactive visualizations for spatial data.">Analytics III (MGMT 142C)</div>
+            <div class="course-item" data-tooltip="MGMT 164 | Entrepreneurial Finance | Spring 2023 | Grade: A-&#10;• Early-stage company categorization and capital formation fundamentals.&#10;• Company valuations and rounds of funding with angel investors and VC.">Entrepreneurial Finance (MGMT 164)</div>
+          </div>
+
+          <p style="font-weight:600; color: var(--accent); margin-bottom: 0.75rem; margin-top: 1rem;">Accounting</p>
+          <div class="course-grid">
+            <div class="course-item" data-tooltip="MGMT 108 | Business Law | Grade: A-&#10;• Fundamentals of business law and corporate regulations.&#10;• Average: A- across accounting track courses.">Business Law (MGMT 108)</div>
+            <div class="course-item" data-tooltip="MGMT 120A | Accounting Principles I | Grade: A-&#10;• Intermediate accounting fundamentals.&#10;• Part of accounting minor for CPA track.">Accounting I (MGMT 120A)</div>
+            <div class="course-item" data-tooltip="MGMT 120B | Accounting Principles II | Grade: A&#10;• Advanced accounting principles.&#10;• Part of accounting minor for CPA track.">Accounting II (MGMT 120B)</div>
+            <div class="course-item" data-tooltip="MGMT 122 | Managerial Accounting | Grade: A-&#10;• Cost accounting and managerial decision-making.&#10;• Part of accounting minor for CPA track.">Managerial Accounting (MGMT 122)</div>
+            <div class="course-item" data-tooltip="MGMT 124 | Advanced Accounting | Grade: A&#10;• Advanced accounting concepts and applications.&#10;• Part of accounting minor for CPA track.">Advanced Accounting (MGMT 124)</div>
+            <div class="course-item" data-tooltip="MGMT 127A | Tax Principles | Grade: A-&#10;• Fundamentals of tax accounting.&#10;• Part of accounting minor for CPA track.">Tax Principles (MGMT 127A)</div>
+            <div class="course-item" data-tooltip="MGMT 127B | Corporate Tax | Grade: B+&#10;• Corporate tax planning and compliance.&#10;• Part of accounting minor for CPA track.">Corporate Tax (MGMT 127B)</div>
           </div>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">Incoming Fall 20XX</div>
+          <div class="timeline-date">Fall 2026 – Starting</div>
           <h3>Master of Financial Engineering</h3>
-          <div class="timeline-org">Target University · City, State</div>
-          <p>Admitted to the [Program Name] MFE program. Focus areas: [derivatives pricing / portfolio optimization / ML in finance / etc.]</p>
+          <div class="timeline-org">Columbia University · New York, NY</div>
+          <p>Rigorous training in quantitative finance and financial engineering. Coursework includes derivatives valuation, portfolio optimization, machine learning in finance, and algorithmic trading. Building expertise in systematic trading strategies and leveraging advanced ML techniques for alpha generation.</p>
         </div>
       </div>
     </section>
@@ -611,28 +833,35 @@
     <!-- EXPERIENCE -->
     <section class="page" id="page-experience">
       <div class="page-eyebrow">Work & Research</div>
-      <h1>Experience</h1>
+      <h1>Work Experience</h1>
 
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-date">Month 20XX – Present</div>
-          <h3>Research Assistant — [Lab / PI Name]</h3>
-          <div class="timeline-org">Your University</div>
-          <p>Describe your research role here. What problem are you solving? What methods are you using? What impact does the work have?</p>
+          <div class="timeline-date">July 2025 – August 2025</div>
+          <h3>International Tax - Quantitative Solutions Technology Intern — PwC</h3>
+          <div class="timeline-org">San Jose, CA</div>
+          <p>Developed Alteryx workflows to parse complex data sets and generate tax approximation models for clients with 1000+ subsidiaries. Leveraged software tools to automate tax calculations based on financial statement data and organization charts. Reviewed and prepared tax workpapers (Forms 5471, 8858, and schedules) for three major multinational clients.</p>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">Summer 20XX</div>
-          <h3>[Role Title] — [Company Name]</h3>
-          <div class="timeline-org">City, State · Internship</div>
-          <p>Placeholder: describe your responsibilities, technologies used, and key accomplishments. Quantify impact where possible.</p>
+          <div class="timeline-date">June 2024 – September 2024</div>
+          <h3>Corporate Tax and Data Analytics Intern — Grant Thornton</h3>
+          <div class="timeline-org">San Jose, CA</div>
+          <p>Conducted over 50 transfer pricing analyses, benchmarking intercompany transactions to ensure compliance with tax regulations. Assisted in preparing 6 full transfer pricing documentation and reports, providing support for audits and regulatory inquiries. Evaluated tax-related risks and contributed to risk management strategies, identifying areas for improved compliance and operational efficiency.</p>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">Month 20XX – Month 20XX</div>
-          <h3>[Role Title] — [Organization]</h3>
-          <div class="timeline-org">Part-time / Volunteer / Club</div>
-          <p>Placeholder: another experience, club leadership, teaching assistantship, or anything else worth highlighting.</p>
+          <div class="timeline-date">January 2024 – December 2024</div>
+          <h3>Undergraduate Teaching Assistant — UCLA Anderson School of Management</h3>
+          <div class="timeline-org">Los Angeles, CA</div>
+          <p>Answered student questions during office hours in place of the professor, facilitating learning across financial accounting and taxation principles. Facilitated midterms and finals for three different classes, ensuring fair and consistent assessment of student knowledge.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">June 2023 – August 2023</div>
+          <h3>Marketing Intern — Loan Factory</h3>
+          <div class="timeline-org">San Jose, CA</div>
+          <p> Supported the company Instagram by creating visuals through Photoshop for various posts. Did market research on how to engage audience interaction, including using language-generating software that can help caption made videos.
         </div>
       </div>
     </section>
@@ -640,62 +869,179 @@
     <!-- RESUME -->
     <section class="page" id="page-resume">
       <div class="page-eyebrow">Résumé</div>
-      <h1>Download<br/>My Résumé</h1>
-
-      <p>A PDF version of my full résumé is available below. Last updated [Month 20XX].</p>
-
-      <div class="placeholder-box">
-        <div class="placeholder-icon">📄</div>
-        <h3 style="margin-bottom:.5rem">Résumé PDF coming soon</h3>
-        <p>Upload your resume PDF to this repo and replace this section with a download link or embedded viewer.</p>
+      <h1>My Résumé & Documents</h1>
+      <p>Download my latest professional documents below. Last updated March 2026.</p>
+      <div style="margin: 2rem 0; text-align: center;">
+        <a href="resume.pdf" class="btn btn-primary" download style="display:inline-block;min-width:220px;margin:1rem 0;font-size:1.05rem;">Résumé (PDF)</a>
         <br/>
-        <a href="resume.pdf" class="btn btn-primary" download>Download PDF</a>
+        <a href="CV for Faculty - 1.12.26.pdf" class="btn btn-primary" download style="display:inline-block;min-width:220px;margin:1rem 0;font-size:1.05rem;">Curriculum Vitae (PDF)</a>
+        <br/>
+        <a href="Quantitative Coursework Summary Sheet - 11.15.25.pdf" class="btn btn-primary" download style="display:inline-block;min-width:220px;margin:1rem 0;font-size:1.05rem;">Quantitative Coursework Summary Sheet (PDF)</a>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section class="page" id="page-projects">
       <div class="page-eyebrow">Work I'm Proud Of</div>
-      <h1>Projects &<br/>Portfolio</h1>
+      <h1>Research &<br/>Projects</h1>
 
-      <div class="project-card">
-        <div class="project-header">
-          <h3>Keystroke Prediction via EMG Signals</h3>
-          <span class="project-status status-active">Active</span>
+      <div class="project-tier-flagship">
+        <h2>Featured Research</h2>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Keystroke Prediction via EMG Signals</h3>
+            <span class="project-status status-active">Active</span>
+          </div>
+          <p>Using surface electromyography (sEMG) recordings from forearm muscles to predict individual keystrokes before they are physically pressed. Leverages a hybrid CNN + RNN architecture to capture both spatial muscle-activation patterns and temporal dynamics.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">CNN</span>
+            <span class="tech-tag">RNN / LSTM</span>
+            <span class="tech-tag">Signal Processing</span>
+          </div>
         </div>
-        <p>Using surface electromyography (sEMG) recordings from forearm muscles to predict individual keystrokes before they are physically pressed. Leverages a hybrid CNN + RNN architecture to capture both spatial muscle-activation patterns and temporal dynamics.</p>
-        <div class="project-tech">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">PyTorch</span>
-          <span class="tech-tag">CNN</span>
-          <span class="tech-tag">RNN / LSTM</span>
-          <span class="tech-tag">Signal Processing</span>
+
+        <!-- STATISTICAL MODELING PROJECTS -->
+        <div class="project-card">
+          <div class="project-header">
+            <h3>ASA Datafest 2025 Winner — Leasing Market Analytics</h3>
+            <span class="project-status status-complete">Winner</span>
+          </div>
+          <p>Won first place in West Coast's largest data hackathon (400+ participants, 10+ universities). Analyzed financial leasing market data using Random Forest models and advanced analytics. Created Power BI visualizations presented to ASA-certified judges, winning the Datafest Visualization category award.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Random Forest</span>
+            <span class="tech-tag">scikit-learn</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">Data Analysis</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Forecasting Oil and Gold Prices</h3>
+            <span class="project-status status-complete">Complete</span>
+          </div>
+          <p>Forecasted oil and gold prices by analyzing time series correlation with stock indices (NASDAQ, DJIA). Selected optimal models using AIC/BIC/MSE criteria—ARDL(1,1) for oil, AR(1,1) for gold. Ran VAR models to test interaction effects. Applied CCF, IRF, CUSUM, and FEVD plots for multivariate time series analysis.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Time Series</span>
+            <span class="tech-tag">ARIMA</span>
+            <span class="tech-tag">VAR Models</span>
+            <span class="tech-tag">R</span>
+            <span class="tech-tag">Econometrics</span>
+          </div>
         </div>
       </div>
 
-      <div class="project-card">
-        <div class="project-header">
-          <h3>Project Title Placeholder</h3>
-          <span class="project-status status-wip">In Progress</span>
-        </div>
-        <p>Brief description of this project. What problem does it solve? What approach did you take? What were the results or current status?</p>
-        <div class="project-tech">
-          <span class="tech-tag">Add</span>
-          <span class="tech-tag">Your</span>
-          <span class="tech-tag">Tech Stack</span>
-        </div>
-      </div>
+      <div class="project-tier-standard">
+        <h2>Additional Projects</h2>
 
-      <div class="project-card">
-        <div class="project-header">
-          <h3>Project Title Placeholder</h3>
-          <span class="project-status status-complete">Complete</span>
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Predicting Taiwanese Business Bankruptcy</h3>
+            <span class="project-status status-complete">Complete</span>
+          </div>
+          <p>Developed Random Forest classification model to predict bankruptcy likelihood for 1000+ startup companies. Compared logistic regression with lasso and random forest models for feature selection. Identified model imbalance issues and corrected using bagged pooling methods. Discovered that growth rate metrics (Net Value Growth Rate, Persistent EPS, Interest Bearing Debt) are stronger bankruptcy predictors than absolute financial values.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">Random Forest</span>
+            <span class="tech-tag">Logistic Regression</span>
+            <span class="tech-tag">Feature Selection</span>
+          </div>
         </div>
-        <p>Brief description of this project. Feel free to link to a GitHub repo, paper, or demo when ready.</p>
-        <div class="project-tech">
-          <span class="tech-tag">Add</span>
-          <span class="tech-tag">Your</span>
-          <span class="tech-tag">Tech Stack</span>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Optimizing Portfolios with Statistical Models</h3>
+            <span class="project-status status-complete">Complete</span>
+          </div>
+          <p>Generated efficient frontiers for portfolios of 30 stocks across multiple industries using mutual fund theorem. Estimated frontiers using Single Index Model (SIM), constant correlation model, and multi-group model. Applied Jensen differential and Sharpe ratio to analyze performance. Used Vasicek and Blume methods to forecast 2022-2025 values with PRESS statistics for model selection.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Statistical Modeling</span>
+            <span class="tech-tag">Portfolio Theory</span>
+            <span class="tech-tag">R</span>
+            <span class="tech-tag">CAPM</span>
+            <span class="tech-tag">Time Series</span>
+          </div>
+        </div>
+
+        <!-- DATA ANALYSIS & VISUALIZATION PROJECTS -->
+        <div class="project-card">
+          <div class="project-header">
+            <h3>EY Bank Analysis and Visualization</h3>
+            <span class="project-status status-complete">Complete</span>
+          </div>
+          <p>Used Power BI and Tableau to visualize comprehensive dashboards analyzing debt securities distribution across bank sizes. Transformed massive CSV/Excel datasets using Power Query and calculated interest rate metrics with table formulas. Tracked trends in HTM (Held-to-Maturity) and AFS (Available-for-Sale) bonds over time.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">Tableau</span>
+            <span class="tech-tag">Power Query</span>
+            <span class="tech-tag">Excel</span>
+            <span class="tech-tag">Data Visualization</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Impacts of Capital Investment on Unemployment</h3>
+            <span class="project-status status-complete">Complete</span>
+          </div>
+          <p>Analyzed panel data (1970-1986) examining relationships between public/private capital, gross state product, and unemployment rates. Identified California and New York GSP growth 10x higher than peers using pooling/fixed/random effects models. Found Texas severely underperforming despite high mean GSP, attributing results to population expansion and technological development.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Panel Data</span>
+            <span class="tech-tag">Econometrics</span>
+            <span class="tech-tag">R</span>
+            <span class="tech-tag">Regression Analysis</span>
+            <span class="tech-tag">Economic Analysis</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Class Is In Session! — Game Theory Modeling</h3>
+            <span class="project-status status-complete">Complete</span>
+          </div>
+          <p>Applied game theory techniques to model optimal collegiate grading schemes. Found exam timing patterns (optimal week 5) and analyzed strategic implications of moving earlier dates. Studied student collusion, professor-student exam difficulty dynamics, and course material coverage. Identified alarming parallels with the "Beauty Contest" concept and proposed policy solutions.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Game Theory</span>
+            <span class="tech-tag">Nash Equilibrium</span>
+            <span class="tech-tag">Strategic Analysis</span>
+            <span class="tech-tag">Economics</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Investments and Finance Labs</h3>
+            <span class="project-status status-complete">Complete</span>
+          </div>
+          <p>Series of practical finance projects: analyzed housing bubble data with exponential decay models for default probability, verified put-call parity using binomial trees, compared convertible bonds with vanilla bond strategies. Conducted NPV analysis for career paths (MBA yielded highest expected value). Calculated alpha using CAPM for 20+ companies and enterprise values using financial statement data.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Finance</span>
+            <span class="tech-tag">Options Pricing</span>
+            <span class="tech-tag">CAPM</span>
+            <span class="tech-tag">NPV Analysis</span>
+            <span class="tech-tag">Excel</span>
+          </div>
+        </div>
+
+        <!-- CODING PROJECTS -->
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Tunnelman Game — 2D Game Development</h3>
+            <span class="project-status status-complete">Complete</span>
+          </div>
+          <p>Developed a 2D-grid game implementing core gameplay mechanics: digging, collecting goodies, avoiding obstacles. Created breadth-first search algorithms for AI pathfinding and responsive enemy behavior. Applied OOP principles including inheritance and polymorphism for actor state management. Designed progressive difficulty scaling with automatically adjusting parameters across multiple levels.</p>
+          <div class="project-tech">
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">Game Development</span>
+            <span class="tech-tag">Data Structures</span>
+            <span class="tech-tag">Algorithms</span>
+            <span class="tech-tag">OOP</span>
+          </div>
         </div>
       </div>
     </section>
@@ -705,11 +1051,28 @@
       <div class="page-eyebrow">Beyond the Desk</div>
       <h1>Hobbies &<br/>Interests</h1>
 
-      <div class="placeholder-box">
-        <div class="placeholder-icon">🎯</div>
-        <h3 style="margin-bottom:.5rem">Coming Soon</h3>
-        <p>Share what you do outside of work and school — sports, music, travel, reading, games, cooking. This page is yours to fill in.</p>
+      <p>When I'm not working on research or financial models, I immerse myself in creative and strategic pursuits. These hobbies keep me sharp and grounded.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+        <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(200, 169, 110, 0.05);">
+          <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem;">Dungeons & Dragons</h3>
+          <p>Dungeon Master for my home campaign "Eclipse." I design intricate worlds, craft compelling NPCs, and guide narratives that challenge and inspire. Worldbuilding has become a passion that mirrors strategic financial thinking.</p>
+        </div>
+        <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(110, 158, 200, 0.05);">
+          <h3 style="color: var(--accent2); margin-bottom: 1rem; font-size: 1.1rem;">Travel & Photography</h3>
+          <p>Exploring new cultures and landscapes feeds my curiosity. Photography allows me to capture moments that reflect both technical precision and artistic vision. Travel has taken me across continents and opened new perspectives.</p>
+        </div>
+        <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(200, 169, 110, 0.05);">
+          <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem;">Music & Instruments</h3>
+          <p>Playing instruments provides a creative outlet that complements analytical work. The discipline required mirrors my approach to technical challenges—practice, refinement, and continuous improvement toward mastery.</p>
+        </div>
+        <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(110, 158, 200, 0.05);">
+          <h3 style="color: var(--accent2); margin-bottom: 1rem; font-size: 1.1rem;">Reading & Learning</h3>
+          <p>Voracious reader across fiction, finance, strategy, and philosophy. Books are my constant companion. Whether exploring narrative worlds or mastering new domains, reading fuels both intellectual growth and creative inspiration.</p>
+        </div>
       </div>
+
+      <p style="margin-top: 2rem; font-size: 0.95rem; color: var(--muted);">These interests aren't distractions from my professional work—they're integral to how I think, create, and approach problems. They keep me balanced and inspired.</p>
     </section>
 
     <!-- CONTACT -->
@@ -720,22 +1083,60 @@
       <p>I'm always open to interesting conversations — whether it's about research, quant finance, collaboration opportunities, or just a good book recommendation.</p>
 
       <div class="contact-grid">
-        <a class="contact-card" href="mailto:your@email.com">
+        <a class="contact-card" href="mailto:nguyentdkkevin@gmail.com">
           <div class="contact-platform">Email</div>
-          <div class="contact-value">your@email.com</div>
+          <div class="contact-value">nguyentdkkevin@gmail.com</div>
         </a>
-        <a class="contact-card" href="https://linkedin.com/in/yourhandle" target="_blank">
+        <a class="contact-card" href="https://www.linkedin.com/in/kevin-nguyen-b4915029a/" target="_blank">
           <div class="contact-platform">LinkedIn</div>
-          <div class="contact-value">linkedin.com/in/yourhandle</div>
-        </a>
-        <a class="contact-card" href="https://github.com/yourhandle" target="_blank">
-          <div class="contact-platform">GitHub</div>
-          <div class="contact-value">github.com/yourhandle</div>
+          <div class="contact-value">linkedin.com/in/kevinnguyen</div>
         </a>
         <a class="contact-card" href="#">
           <div class="contact-platform">Location</div>
-          <div class="contact-value">Your City, State</div>
+          <div class="contact-value">Milpitas, CA</div>
         </a>
+      </div>
+    </section>
+
+    <!-- ECLIPSE CAMPAIGN -->
+    <section class="page" id="page-eclipse">
+      <div class="page-eyebrow">Personal Campaigns</div>
+      <h1>Eclipse<br/>Campaign</h1>
+
+      <p>As the Dungeon Master for Eclipse, I craft immersive fantasy worlds and narratives for our adventuring party. This is where worldbuilding, storytelling, and strategic gameplay converge.</p>
+
+      <div class="placeholder-box">
+        <div class="placeholder-icon">🐉</div>
+        <h3 style="margin-bottom:.5rem">Campaign Notes Coming Soon</h3>
+        <p>Updates on campaign progress, character backgrounds, world lore, memorable moments, and epic encounters will be shared here.</p>
+      </div>
+    </section>
+
+    <!-- TRAVEL -->
+    <section class="page" id="page-travel">
+      <div class="page-eyebrow">Adventures Abroad</div>
+      <h1>Travel &<br/>Exploration</h1>
+
+      <p>From mountains to cities, each journey brings new perspectives and experiences. Here are some of my favorite travel memories and destinations.</p>
+
+      <div class="placeholder-box">
+        <div class="placeholder-icon">✈️</div>
+        <h3 style="margin-bottom:.5rem">Travel Gallery Coming Soon</h3>
+        <p>Photos and stories from my travels around the world will be featured here. Stay tuned for updates!</p>
+      </div>
+    </section>
+
+    <!-- ARCHIVES -->
+    <section class="page" id="page-archives">
+      <div class="page-eyebrow">Looking Back</div>
+      <h1>Archives &<br/>Throwbacks</h1>
+
+      <p>A collection of historical projects, fun experiments, and earlier work from my younger years. These projects shaped my journey and technical foundation.</p>
+
+      <div class="placeholder-box">
+        <div class="placeholder-icon">📚</div>
+        <h3 style="margin-bottom:.5rem">Archives Coming Soon</h3>
+        <p>Early projects, learning experiments, and nostalgic work from my earlier years will be archived here.</p>
       </div>
     </section>
 
@@ -762,6 +1163,8 @@
       navigate(a.dataset.page);
     });
   });
+
+
 </script>
 </body>
 </html>
