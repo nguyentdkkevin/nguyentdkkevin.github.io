@@ -525,7 +525,49 @@
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
-      #sidebar { transform: translateX(-100%); }
+      #layout {
+        display: block;
+      }
+      #sidebar {
+        position: sticky;
+        top: 0;
+        left: auto;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        padding: .9rem 1rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(232, 197, 71, 0.2);
+        overflow: visible;
+      }
+      .sidebar-name {
+        margin-bottom: .15rem;
+      }
+      .sidebar-tagline {
+        margin-bottom: .6rem;
+      }
+      .nav-category,
+      .sidebar-footer,
+      .sidebar-divider {
+        display: none;
+      }
+      nav {
+        display: flex;
+        gap: .35rem;
+        overflow-x: auto;
+        padding-bottom: .1rem;
+        -webkit-overflow-scrolling: touch;
+      }
+      nav::-webkit-scrollbar {
+        display: none;
+      }
+      nav a {
+        flex: 0 0 auto;
+        margin-bottom: 0;
+        padding: .5rem .65rem;
+        font-size: .8rem;
+        white-space: nowrap;
+      }
       #main { margin-left: 0; }
       .page { padding: 2rem 1.5rem; }
       .about-grid { grid-template-columns: 1fr; }
