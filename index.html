@@ -173,7 +173,7 @@
       letter-spacing: .04em;
       margin-bottom: .25rem;
     }
-    p { color: #b5b2aa; margin-bottom: 1rem; }
+    p { color: #786b5d; margin-bottom: 1rem; }
     p:last-child { margin-bottom: 0; }
 
     /* ── Home ── */
@@ -561,6 +561,14 @@
       --muted: #5a4a3a;
     }
 
+    .page#page-eclipse {
+      background: linear-gradient(rgba(245, 240, 235, 0.8), rgba(245, 240, 235, 0.8)),
+                    url('Ortavis-Main.png') left top/auto 100% no-repeat;
+      background-color: #f5f0eb;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
   </style>
 </head>
 <body>
@@ -644,19 +652,24 @@
     <section class="page active" id="page-home">
       <div class="page-eyebrow">Welcome</div>
       <h1>Greetings,<br/>I am Kevin Nguyen.</h1>
-      <p class="home-intro">Quantitative analyst and machine learning engineer. Now at Columbia MFE, building systematic trading strategies at the nexus of mathematics, computation, and finance.</p>
-      <p>I build computational models that decode complexity—from neural networks extracting signals from physiological data to algorithms navigating market microstructure. My approach combines rigorous mathematical foundations with practical implementation, always seeking the intersection of theory and impact.</p>
-
+      <p class="home-intro">Quantitative finance and machine learning engineer. Currently a triple major at UCLA, soon to be doing a Masters in Financial Engineering at Columbia. Building trading strategies at the nexus of mathematics, computation, and finance.</p>
+      
       <div class="home-links">
         <button class="btn btn-primary" onclick="navigate('projects')">View Projects</button>
         <button class="btn btn-ghost" onclick="navigate('about')">About Me</button>
         <button class="btn btn-ghost" onclick="navigate('contact')">Get in Touch</button>
       </div>
 
-      <div style="margin-top: 2.5rem;">
+      <div style="margin-top: 2.5rem; margin-bottom: 2.5rem;">
         <img src="Front Cover Image.jpg" alt="Kevin Nguyen"
           style="width: 100%; max-width: 620px; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 40px rgba(0,0,0,0.13); object-fit: cover; display: block;" />
       </div>
+
+      <p>I’m a senior at UCLA studying Statistics & Data Science, Mathematics of Computation, and Business Economics, minoring in Accounting, with a strong interest in quantitative finance and accounting.</p>
+      <p>My professional experience spans tax preparation, transfer pricing, and quantitative work at firms like PwC and Grant Thornton, where I built data pipelines, automated workflows, and supported complex financial analyses across large multinational clients. I am planning to finish my CPA exams upon graduation. Across my projects and internships, I’ve worked with a lot of data transformation tools, starting from Excel and building off into Power Query and Alteryx. I also greatly enjoy my skills in data visualization, particularly because my team in the ASA Datafest won 1st place due to being in that category!</p>
+      <p>Outside the workforce, I like to consider myself an explorer and hobbyist. I tend to get obsessed with new skills from time to time, such as parkour, speed cubing, card magic, rock climbing, and then more recently, Dungeons and Dragons. One of the biggest parts of my life is running my weekly D&D game that has gone on for over 2 years now. It truly has shaped my organizational, improvisational, and leadership skills, all the while allowing me to have fun with friends from time to time. I also love all outdoor activities and traveling, growing up in the Scouts of America and going places with my family a lot. In college, I currently spend most of my time executing as the President of Enigma, UCLA's largest and oldest tabletop roleplaying, board gaming club, and all-around social club!</p>
+      <p>I’m currently applying to graduate programs in financial engineering and quantitative finance, with the goal of expanding my horizon in the world of business, mathematics, finance, accounting, and data science. I enjoy keeping my worldview flexible and would potentially be interested in research down the line too.</p>
+      <p>Always open to connecting with others in quant, finance, accounting, and data science!</p>
 
       <div class="home-stats">
         <div class="stat">
@@ -681,15 +694,15 @@
 
       <div class="about-grid">
         <div>
-          <p>I'm driven by the belief that rigorous quantitative thinking and elegant engineering can unlock value in financial markets. At UCLA, I developed a strong foundation across mathematics, computer science, and economics—completing dual majors in Business Economics and Mathematics of Computation, with a focus on Statistics and Data Science. My 3.788 GPA reflects deep engagement with theory-heavy coursework in analysis, stochastic processes, econometrics, and machine learning.</p>
+          <p>The world I grew up in is defined by "breadth". My parents enrolled me in countless activities of sports and music, shaping curiosity into a lifestyle. I found myself self-studying AP Psychology during middle school silent reading and researching Sierra pine species after a family trip to Yosemite. An intense elementary school rivalry taught me to excel beyond academics too, instilling a "jack of all trades" mentality that became my breadth-first approach to life.</p>
 
-          <p>Whether building statistical models to extract signals from market data, or architecting algorithms for systematic trading strategies, I approach every challenge with both analytical rigor and practical creativity. I thrive at the intersection of theory and application, where elegant mathematics meets tangible impact in financial systems.</p>
+          <p>At UCLA, this instinct evolved into a high-intensity academic path: three majors and a minor, sustained by 25-29 units per quarter. I entered as a Business Economics major for a vision, added an Accounting minor for professional experience, then embraced Statistics and Mathematics to satisfy the love for abstraction and problem-solving I developed in my childhood.</p>
 
-          <p>I'm currently pursuing a Master of Financial Engineering at Columbia University, deepening expertise in quantitative methods, derivatives valuation, portfolio optimization, and algorithmic trading. I'm particularly passionate about machine learning applications in finance—using computational methods to uncover alpha and build robust trading systems.</p>
+          <p>Interestingly, my greatest training ground to build this mindset isn't even the classroom, it's my years-long Dungeons & Dragons campaign. As Dungeon Master, I enjoy 15 hours of weekly preparation and improvisational storytelling with five other players. This role has taught me leadership and organizational skills. Running this campaign weekly keeps me grounded in enjoyment too, sustaining work-life balance while sharpening my ability to work in high pressure environments.</p>
 
-          <p>Beyond the terminal, I explore connections between disciplines: complexity theory, behavioral finance, market microstructure. I believe the most innovative solutions come from synthesizing rigorous theory with creative problem-solving.</p>
-
-          <div class="tag-list">
+          <p>I now see myself as a product of these rabbit hole obsessions: speed cubing, card magic, board game design, and more. Academically, I have evolved from a student of many subjects into someone who synthesizes his many disciplines. I've built the breadth. Now, I'm ready to go depth-first.</p>
+        
+        <div class="tag-list">
             <span class="tag">Quantitative Finance</span>
             <span class="tag">Machine Learning</span>
             <span class="tag">Statistical Modeling</span>
@@ -712,15 +725,19 @@
             <div class="about-card-label">Quick Facts</div>
             <div class="about-card-item">
               <span>Education</span>
-              <span>UCLA · 3.788 GPA</span>
+              <span>UCLA · 3.79 GPA</span>
             </div>
             <div class="about-card-item">
-              <span>Current Program</span>
+              <span>Incoming Program</span>
               <span>Columbia MFE</span>
             </div>
             <div class="about-card-item">
               <span>Majors</span>
-              <span>Econ, Math, Stats</span>
+              <span>Business Economics, Mathematics of Computation, Statistics and Data Science</span>
+            </div>
+            <div class="about-card-item">
+              <span>Minor</span>
+              <span>Accounting</span>
             </div>
             <div class="about-card-item">
               <span>Programming</span>
@@ -728,7 +745,7 @@
             </div>
             <div class="about-card-item">
               <span>Specialties</span>
-              <span>ML, Trading, Modeling</span>
+              <span>ML, Trading, Modeling, Accounting</span>
             </div>
           </div>
         </div>
@@ -742,12 +759,12 @@
 
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-date">Expected May 2026</div>
-          <h3>Bachelor of Science — Multiple Majors</h3>
+          <div class="timeline-date">Expected June 2026</div>
+          <h3>Bachelor of Science</h3>
           <div class="timeline-org">University of California, Los Angeles · Los Angeles, CA</div>
-          <p><strong>Majors:</strong> Business Economics, Mathematics of Computation, Statistics and Data Science</p>
-          <p><strong>Minor:</strong> Accounting | <strong>Cumulative GPA:</strong> 3.788 / 4.00 | <strong>Dean's List</strong> (Spring 2024)</p>
-          <p>Rigorous quantitative curriculum emphasizing advanced mathematics, statistical theory, and applications to finance and data science. Completed 378.5 total units with strong performance in computationally-intensive and theory-heavy coursework.</p>
+          <p><strong>Majors:</strong> Business Economics, Mathematics of Computation, Statistics and Data Science | <strong>Minor:</strong> Accounting</p>
+          <p><strong>Cumulative GPA:</strong> 3.79 / 4.00 | <strong>Dean's List</strong></p>
+          <p>Rigorous quantitative curriculum emphasizing advanced pure and applied mathematics, statistical theory, and applications to finance and data science. Includes classes delving into business structures and the corporate / finance world. Completed 408.5 total units with strong performance in computationally-intensive and theory-heavy coursework.</p>
           <p style="font-weight:600; color: var(--accent); margin-bottom: 0.75rem; margin-top: 1rem;">Statistics and Data Science</p>
           <div class="course-grid">
             <div class="course-item" data-tooltip="STATS 100A | Probability | Spring 2024 | Grade: A+&#10;• Developed probability models for common discrete and continuous distributions.&#10;• Explored conditional probability, pdfs/cdfs, limit theorems, and moment-generating functions.">Probability (STATS 100A)</div>
@@ -759,7 +776,7 @@
             <div class="course-item" data-tooltip="STATS 102A | Computational Statistics | Winter 2025 | Grade: A&#10;• Developed R skills: tidydata, webscraping, dplyr.&#10;• Implemented numerical methods and bootstrapping.">Computational Statistics (STATS 102A)</div>
             <div class="course-item" data-tooltip="STATS 102B | Optimization | Spring 2025 | Grade: A+&#10;• Learned gradient descent and variants (Nesterov, Heavy Ball, AdaGrad).&#10;• Introduction to neural networks with cross-validation and ROC curves.">Optimization (STATS 102B)</div>
             <div class="course-item" data-tooltip="STATS 102C | Monte Carlo Methods | Summer 2025 | Grade: A&#10;• Introduction to Bayesian statistics and stochastic processes.&#10;• Learned importance sampling, rejection sampling, Gibbs Sampler.">Monte Carlo Methods (STATS 102C)</div>
-            <div class="course-item" data-tooltip="STATS 186 | Statistical Models | Fall 2025 | Grade: In Progress&#10;• Worked with efficient frontier and volatility-return tradeoff.&#10;• Derived option theory formulas and Black-Scholes formula.">Statistical Models Finance (STATS 186)</div>
+            <div class="course-item" data-tooltip="STATS C183 | Statistical Models | Fall 2025 | Grade: In Progress&#10;• Worked with efficient frontier and volatility-return tradeoff.&#10;• Derived option theory formulas and Black-Scholes formula.">Statistical Models Finance (STATS 186)</div>
           </div>
 
           <p style="font-weight:600; color: var(--accent); margin-bottom: 0.75rem; margin-top: 1rem;">Mathematics</p>
@@ -869,10 +886,10 @@
     <!-- RESUME -->
     <section class="page" id="page-resume">
       <div class="page-eyebrow">Résumé</div>
-      <h1>My Résumé & Documents</h1>
+      <h1>My Resume & Documents</h1>
       <p>Download my latest professional documents below. Last updated March 2026.</p>
       <div style="margin: 2rem 0; text-align: center;">
-        <a href="resume.pdf" class="btn btn-primary" download style="display:inline-block;min-width:220px;margin:1rem 0;font-size:1.05rem;">Résumé (PDF)</a>
+        <a href="resume.pdf" class="btn btn-primary" download style="display:inline-block;min-width:220px;margin:1rem 0;font-size:1.05rem;">Resume (PDF)</a>
         <br/>
         <a href="CV for Faculty - 1.12.26.pdf" class="btn btn-primary" download style="display:inline-block;min-width:220px;margin:1rem 0;font-size:1.05rem;">Curriculum Vitae (PDF)</a>
         <br/>
@@ -1051,7 +1068,7 @@
       <div class="page-eyebrow">Beyond the Desk</div>
       <h1>Hobbies &<br/>Interests</h1>
 
-      <p>When I'm not working on research or financial models, I immerse myself in creative and strategic pursuits. These hobbies keep me sharp and grounded.</p>
+      <p>When I'm not working on research or financial models, I immerse myself in creative and strategic pursuits. These hobbies keep me sharp, grounded, and constantly learning.</p>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
         <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(200, 169, 110, 0.05);">
@@ -1059,16 +1076,32 @@
           <p>Dungeon Master for my home campaign "Eclipse." I design intricate worlds, craft compelling NPCs, and guide narratives that challenge and inspire. Worldbuilding has become a passion that mirrors strategic financial thinking.</p>
         </div>
         <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(110, 158, 200, 0.05);">
-          <h3 style="color: var(--accent2); margin-bottom: 1rem; font-size: 1.1rem;">Travel & Photography</h3>
-          <p>Exploring new cultures and landscapes feeds my curiosity. Photography allows me to capture moments that reflect both technical precision and artistic vision. Travel has taken me across continents and opened new perspectives.</p>
-        </div>
-        <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(200, 169, 110, 0.05);">
-          <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem;">Music & Instruments</h3>
-          <p>Playing instruments provides a creative outlet that complements analytical work. The discipline required mirrors my approach to technical challenges—practice, refinement, and continuous improvement toward mastery.</p>
+          <h3 style="color: var(--accent2); margin-bottom: 1rem; font-size: 1.1rem;">Rock Climbing</h3>
+          <p>I've been climbing for four years and love both indoor and outdoor routes. My favorite places are Yosemite and Red Rock Canyon in Nevada. I'm part of UCLA's climbing team, and I'm hoping to get out to Joshua Tree and Bishop soon.</p>
         </div>
         <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(110, 158, 200, 0.05);">
-          <h3 style="color: var(--accent2); margin-bottom: 1rem; font-size: 1.1rem;">Reading & Learning</h3>
-          <p>Voracious reader across fiction, finance, strategy, and philosophy. Books are my constant companion. Whether exploring narrative worlds or mastering new domains, reading fuels both intellectual growth and creative inspiration.</p>
+          <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem;">Travel & Photography</h3>
+          <p>I love taking all kinds of photos while traveling, from street scenes to landscapes. My favorite places so far are Italy and Japan, and one of my next goals is a full Central Europe tour.</p>
+        </div>
+        <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(200, 169, 110, 0.05);">
+          <h3 style="color: var(--accent2); margin-bottom: 1rem; font-size: 1.1rem;">Outdoors</h3>
+          <p>I grew up in the Boy Scouts of America and earned my Eagle Scout rank. I love camping, hiking, and especially skiing. I aim to ski every year and always look forward to hitting double black runs with my brothers.</p>
+        </div>
+        <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(200, 169, 110, 0.05);">
+          <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem;">Piano</h3>
+          <p>Piano has been one of my biggest lifelong interests for 15+ years. My favorite piece is Liebestraum, and one of my proudest goals was performing all four of Chopin's Ballades.</p>
+        </div>
+        <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(110, 158, 200, 0.05);">
+          <h3 style="color: var(--accent2); margin-bottom: 1rem; font-size: 1.1rem;">Board Games</h3>
+          <p>I'm the President of Enigma at UCLA, our tabletop roleplaying and board gaming club. We host social events around modern board games and run lots of D&D sessions throughout the year.</p>
+        </div>
+        <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(200, 169, 110, 0.05);">
+          <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem;">Cardistry and Magic</h3>
+          <p>I enjoy cardistry and sleight-of-hand magic, and I collect unique decks and cards. It is a fun mix of technical precision, creativity, and performance.</p>
+        </div>
+        <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(110, 158, 200, 0.05);">
+          <h3 style="color: var(--accent2); margin-bottom: 1rem; font-size: 1.1rem;">Speedcubing</h3>
+          <p>I used to speedcube heavily and still have a large collection of puzzle cubes. It is one of the hobbies that sparked my love for pattern recognition and problem-solving.</p>
         </div>
       </div>
 
@@ -1080,7 +1113,7 @@
       <div class="page-eyebrow">Get In Touch</div>
       <h1>Let's<br/>Connect.</h1>
 
-      <p>I'm always open to interesting conversations — whether it's about research, quant finance, collaboration opportunities, or just a good book recommendation.</p>
+      <p>I'm always open to interesting conversations, whether it's about research, quant finance, collaboration opportunities, Dungeons and Dragons, or generic life philosophy. Oh, I love talking about random forest trees too.</p>
 
       <div class="contact-grid">
         <a class="contact-card" href="mailto:nguyentdkkevin@gmail.com">
@@ -1101,14 +1134,38 @@
     <!-- ECLIPSE CAMPAIGN -->
     <section class="page" id="page-eclipse">
       <div class="page-eyebrow">Personal Campaigns</div>
-      <h1>Eclipse<br/>Campaign</h1>
+      <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <h1 style="margin-bottom:0;">Eclipse<br/>Campaign</h1>
+        <img src="Eclipse_Logo_Background.png" alt="Eclipse campaign logo"
+          style="width: 84px; height: 84px; object-fit: cover; border-radius: 50%; border: 2px solid rgba(184, 134, 11, 0.5); box-shadow: 0 6px 18px rgba(0,0,0,0.18);" />
+      </div>
 
       <p>As the Dungeon Master for Eclipse, I craft immersive fantasy worlds and narratives for our adventuring party. This is where worldbuilding, storytelling, and strategic gameplay converge.</p>
 
-      <div class="placeholder-box">
-        <div class="placeholder-icon">🐉</div>
-        <h3 style="margin-bottom:.5rem">Campaign Notes Coming Soon</h3>
-        <p>Updates on campaign progress, character backgrounds, world lore, memorable moments, and epic encounters will be shared here.</p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+        <a href="https://www.youtube.com/@sugiednd" target="_blank" rel="noopener noreferrer"
+           style="text-decoration:none; color:inherit; background: rgba(254, 252, 248, 0.95); border:1px solid var(--border); border-left:4px solid #cc0000; border-radius:12px; padding:1rem 1.1rem; box-shadow:0 8px 18px rgba(0,0,0,0.08); transition:transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s var(--ease);">
+          <div style="font-family:'DM Mono', monospace; font-size:.68rem; color:#cc0000; text-transform:uppercase; letter-spacing:.1em; margin-bottom:.35rem;">YouTube</div>
+          <div style="font-size:1rem; font-weight:600; color:var(--text); margin-bottom:.2rem;">@sugiednd</div>
+          <p style="margin:0; color:var(--muted); font-size:.85rem;">Uploaded vods, campaign clips / shorts, of Eclipse and other one-shots and events ran by us!</p>
+        </a>
+
+        <a href="https://www.twitch.tv/sugiednd" target="_blank" rel="noopener noreferrer"
+           style="text-decoration:none; color:inherit; background: rgba(254, 252, 248, 0.95); border:1px solid var(--border); border-left:4px solid #6441a5; border-radius:12px; padding:1rem 1.1rem; box-shadow:0 8px 18px rgba(0,0,0,0.08); transition:transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s var(--ease);">
+          <div style="font-family:'DM Mono', monospace; font-size:.68rem; color:#6441a5; text-transform:uppercase; letter-spacing:.1em; margin-bottom:.35rem;">Twitch</div>
+          <div style="font-size:1rem; font-weight:600; color:var(--text); margin-bottom:.2rem;">sugiednd</div>
+          <p style="margin:0; color:var(--muted); font-size:.85rem;">Live play sessions of Eclipse and other one-shots and events. Join us in the chat!</p>
+        </a>
+      </div>
+
+      <div style="margin-top: 1.25rem;">
+        <p>Follow along for campaign highlights, lore drops, clips, and session recaps from the world of Ortavis.</p>
+      </div>
+
+      <div style="margin-top: 1.75rem; background: rgba(254, 252, 248, 0.96); border: 1px solid var(--border); border-radius: 12px; padding: 1rem;">
+        <h3 style="margin-bottom:.6rem; color: var(--accent2);">Map of Aeguheas</h3>
+        <img src="Aeguheas-Sector.jpg" alt="Map of Aeguheas"
+          style="width: 100%; border-radius: 8px; border: 1px solid var(--border); display: block;" />
       </div>
     </section>
 
